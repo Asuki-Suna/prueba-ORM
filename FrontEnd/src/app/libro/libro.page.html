@@ -1,0 +1,79 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>libro</ion-title>
+  </ion-toolbar>
+  <div class="tables">
+    <ion-button (click)="goToAutor()"shape="round">Autor</ion-button>
+    <ion-button (click)="goToGenero()"shape="round">Genero</ion-button>
+    <ion-button (click)="goToLibro()" shape="round">Libro</ion-button>
+  </div>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">libro</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <div>
+    <form (ngSubmit)="addLibro()">
+      <ion-item>
+        <ion-label position="floating">Titulo</ion-label>
+        <ion-input type="text" [(ngModel)]="titleID" name="nameID"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Año</ion-label>
+        <ion-input type="text" [(ngModel)]="anioID" name="subnameID"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Precio</ion-label>
+        <ion-input type="text" [(ngModel)]="priceID" name="subnameID"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">ID Autor</ion-label>
+        <ion-input type="text" [(ngModel)]="autorID" name="subnameID"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">ID genero</ion-label>
+        <ion-input type="text" [(ngModel)]="genreID" name="subnameID"></ion-input>
+      </ion-item>
+      <ion-button block color="primary" type="submit">Añadir</ion-button>
+    </form>
+  </div>
+
+  <div>
+    <ion-list>
+      <ion-item *ngFor="let l of libro">
+        <label>
+          <p>
+            <span>ID: </span>
+            <span>{{l.isbn}}</span>
+          </p>
+          <p>
+            <span>Titulo: </span>
+            <span>{{l.titulo}}</span>
+          </p>
+          <p>
+            <span>Año: </span>
+            <span>{{l.anio}}</span>
+          </p>
+          <p>
+            <span>Precio: </span>
+            <span>{{l.precio}}</span>
+          </p>
+          <p>
+            <span>ID Autor: </span>
+            <span>{{l.autorByIdAutor}}</span>
+          </p>
+          <p>
+            <span>ID Genero: </span>
+            <span>{{l.generoByIdGenero}}</span>
+          </p>
+          <ion-button (click)="onClickDelete(l.idGenero)" expand="block" shape="round">Borrar</ion-button>
+          <ion-button (click)="onClickUpdate(l.idGenero)" expand="block" shape="round">Actualizar</ion-button>
+        </label>
+      </ion-item>
+    </ion-list>
+  </div>
+
+</ion-content>

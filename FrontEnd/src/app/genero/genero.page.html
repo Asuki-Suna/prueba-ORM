@@ -1,0 +1,55 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>genero</ion-title>
+  </ion-toolbar>
+  <div class="tables">
+    <ion-button (click)="goToAutor()"shape="round">Autor</ion-button>
+    <ion-button (click)="goToGenero()"shape="round">Genero</ion-button>
+    <ion-button (click)="goToLibro()" shape="round">Libro</ion-button>
+  </div>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">genero</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div>
+    <form (ngSubmit)="addGenero()">
+      <ion-item>
+        <ion-label position="floating">Nombre</ion-label>
+        <ion-input type="text" [(ngModel)]="nameID" name="nameID"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Descripcion</ion-label>
+        <ion-input type="text" [(ngModel)]="descriptionID" name="subnameID"></ion-input>
+      </ion-item>
+      <ion-button block color="primary" type="submit">Añadir</ion-button>
+    </form>
+  </div>
+
+  <div>
+    <ion-list>
+      <ion-item *ngFor="let g of genero">
+        <label>
+          <p>
+            <span>ID: </span>
+            <span>{{g.idGenero}}</span>
+          </p>
+          <p>
+            <span>Nombre: </span>
+            <span>{{g.nombre}}</span>
+          </p>
+          <p>
+            <span>Descripcion: </span>
+            <span>{{g.descripcion}}</span>
+          </p>
+          <ion-button (click)="onClickDelete(g.idGenero)" expand="block" shape="round">Borrar</ion-button>
+          <ion-button (click)="onClickUpdate(g.idGenero)" expand="block" shape="round">Actualizar</ion-button>
+        </label>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>

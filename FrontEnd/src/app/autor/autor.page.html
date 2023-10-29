@@ -1,0 +1,62 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Autor</ion-title>
+  </ion-toolbar>
+  <div class="tables">
+    <ion-button (click)="goToAutor()"shape="round">Autor</ion-button>
+    <ion-button (click)="goToGenero()"shape="round">Genero</ion-button>
+    <ion-button (click)="goToLibro()" shape="round">Libro</ion-button>
+  </div>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Autor</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div>
+    <form (ngSubmit)="addAutor()">
+      <ion-item>
+        <ion-label position="floating">Nombre</ion-label>
+        <ion-input type="text" [(ngModel)]="nameID" name="nameID"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Apellido</ion-label>
+        <ion-input type="text" [(ngModel)]="subnameID" name="subnameID"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Fecha de nacimiento</ion-label>
+        <ion-input type="text" [(ngModel)]="dateID" name="dateID"></ion-input>
+      </ion-item>
+      <ion-button block color="primary" type="submit">Añadir</ion-button>
+    </form>
+  </div>
+
+  <div>
+    <ion-list>
+      <ion-item *ngFor="let a of autor">
+        <label>
+          <p>
+            <span>ID: </span>
+            <span>{{a.idAutor}}</span>
+          </p>
+          <p>
+            <span>Nombre: </span>
+            <span>{{a.nombre}}</span>
+          </p>
+          <p>
+            <span>Apellido: </span>
+            <span>{{a.apellido}}</span>
+          </p>
+          <p><span>Fecha de nacimiento: </span>
+            <span>{{a.fNacimiento}}</span>
+          </p>
+          <ion-button (click)="onClickDelete(a.idAutor)" expand="block" shape="round">Borrar</ion-button>
+          <ion-button (click)="onClickUpdate(a.idAutor)" expand="block" shape="round">Actualizar</ion-button>
+        </label>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>
